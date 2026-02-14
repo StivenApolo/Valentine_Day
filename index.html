@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Niña Preciosa ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Reproductor de música de fondo -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Botón de control de música -->
+    <button id="musicToggle" class="music-toggle" title="Reproducir música">
+        🎵
+    </button>
+    
+    <!-- Hojas cayendo -->
+    <div id="fallingLeaves"></div>
+    
+    <div class="main-container">
+        <div class="pergamino">
+            <div class="love-letter">
+                <h1>Para mi niña preciosa:</h1>
+                <p>Desde la primera vez que te vi, supe que había algo especial en ti.
+                Y después de conocerte y hablar contigo, entendí que te quería en mi vida.</p>
+                
+                <p>A tu lado todo se vuelve más bonito; me haces feliz en cada momento, incluso en los más simples.</p>
+                
+                <p>Por favor, quédate conmigo, mucho, mucho tiempo.</p>
+                
+                <p class="signature">Te quiero muchísimo… y aún más.<br>Dess</p>
+            </div>
+            
+            <div class="timer-section">
+                <p class="timer-intro">Me has hecho feliz durante…</p>
+                <div id="timer">
+                    <span id="days">0</span> días 
+                    <span id="hours">0</span> horas 
+                    <span id="minutes">0</span> minutos 
+                    <span id="seconds">0</span> segundos
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 50%, #d4c4b0 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Particles.js container */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Botón de control de música */
+.music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border: 4px solid #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.music-toggle:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 12px 35px rgba(255, 20, 147, 0.7);
+}
+
+.music-toggle:active {
+    transform: scale(0.95);
+}
+
+.music-toggle.playing {
+    animation: musicPulse 1s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 12px 35px rgba(255, 20, 147, 0.8);
+    }
+}
+
+/* Contenedor principal centrado */
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Pergamino */
+.pergamino {
+    max-width: 700px;
+    width: 90%;
+    background: #faf7f2;
+    padding: 60px 50px;
+    border-radius: 10px;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 60px rgba(139, 69, 19, 0.05);
+    border: 2px solid #d4c4b0;
+    position: relative;
+    text-align: center;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.pergamino::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.1);
+    pointer-events: none;
+}
+
+/* Contenedor de hojas cayendo */
+#fallingLeaves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Hoja cayendo con animación mejorada */
+.falling-leaf {
+    position: absolute;
+    font-size: 25px;
+    animation: fall linear forwards;
+    z-index: 10;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) translateX(var(--drift, 0)) rotate(720deg);
+        opacity: 0;
+    }
+}
+/* Palabras de amor al hacer click */
+.love-word {
+    position: fixed;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    font-weight: 700;
+    color: #d63384;
+    pointer-events: none;
+    z-index: 100;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Fallback animation si Anime.js no carga */
+@keyframes loveWordFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0.8);
+    }
+}
+/* Contenedor del mensaje */
+.message-container {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 60vh;
+}
+
+/* Carta de amor */
+.love-letter {
+    margin-bottom: 50px;
+}
+
+.love-letter h1 {
+    color: #8b4513;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    opacity: 1;
+}
+
+.love-letter p {
+    color: #5a4a3a;
+    font-size: 1.3em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.love-letter .signature {
+    text-align: center;
+    font-style: normal;
+    color: #8b4513;
+    font-weight: 600;
+    margin-top: 30px;
+    font-size: 1.4em;
+}
+
+/* Sección del temporizador */
+.timer-section {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid #d4c4b0;
+    text-align: center;
+    opacity: 1;
+}
+
+.timer-intro {
+    color: #5a4a3a;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#timer {
+    color: #8b4513;
+    font-size: 1.4em;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+#timer span {
+    font-weight: 700;
+    color: #d63384;
+    display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pergamino {
+        padding: 40px 30px;
+        width: 95%;
+    }
+    
+    .love-letter h1 {
+        font-size: 1.8em;
+    }
+    
+    .love-letter p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+    
+    .timer-intro {
+        font-size: 1em;
+    }
+    
+    #timer {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .pergamino {
+        padding: 30px 20px;
+    }
+    
+    .love-letter h1 {
+        font-size: 1.5em;
+    }
+    
+    .love-letter p {
+        font-size: 1em;
+    }
+    
+    .love-letter .signature {
+        font-size: 1.2em;
+    }
+    
+    .timer-intro {
+        font-size: 0.95em;
+    }
+    
+    #timer {
+        font-size: 1em;
+    }
+    
+    .falling-leaf {
+        font-size: 18px;
+    }
+}

@@ -3,181 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 ¡Feliz Cumpleaños Brillito! 🎂</title>
-    <link rel="stylesheet" href="style.css">
+    <title>🎉 Galería de Momentos con Brillito ✨</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fredoka:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Audio de fondo -->
-    <audio id="birthdayMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-brand">✨ Momentos con Brillito ✨</h1>
+            <ul class="nav-menu">
+                <li><a href="#inicio" onclick="scrollToSection('inicio')">Inicio</a></li>
+                <li><a href="#galeria" onclick="scrollToSection('galeria')">Galería</a></li>
+                <li><a href="#mensajes" onclick="scrollToSection('mensajes')">Mensajes</a></li>
+                <li><a href="#deseos" onclick="scrollToSection('deseos')">Deseos</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Control de música -->
     <button id="musicToggle" class="music-toggle" title="🎵 Música">
         🔊
     </button>
 
+    <!-- Audio de fondo -->
+    <audio id="birthdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Confeti -->
     <div id="confetti-container"></div>
 
     <!-- Contenedor principal -->
-    <div class="birthday-container">
+    <div class="main-container">
         
-        <!-- Portada de Bienvenida -->
-        <section class="welcome-section" id="welcomeSection">
-            <div class="welcome-content">
-                <div class="balloon balloon-pink" style="--delay: 0s;"></div>
-                <div class="balloon balloon-yellow" style="--delay: 0.2s;"></div>
-                <div class="balloon balloon-blue" style="--delay: 0.4s;"></div>
-                <div class="balloon balloon-purple" style="--delay: 0.6s;"></div>
-                <div class="balloon balloon-green" style="--delay: 0.8s;"></div>
+        <!-- SECCIÓN INICIO -->
+        <section class="hero-section" id="inicio">
+            <div class="hero-content">
+                <div class="balloon balloon-pink"></div>
+                <div class="balloon balloon-yellow"></div>
+                <div class="balloon balloon-blue"></div>
+                <div class="balloon balloon-purple"></div>
+                <div class="balloon balloon-green"></div>
 
-                <h1 class="welcome-title">¡Feliz Cumpleaños!</h1>
-                <h2 class="welcome-subtitle">Brillito ✨</h2>
+                <h1>¡Feliz Cumpleaños!</h1>
+                <h2>Brillito ✨</h2>
                 
-                <p class="welcome-message">
-                    Este regalo es para ti,<br>
-                    una persona especial llena de luz y alegría.
+                <p>
+                    Esta es una galería especial de momentos<br>
+                    que hemos compartido juntos.<br>
+                    Cada foto es un recuerdo de lo especial que eres.
                 </p>
 
-                <button class="btn-start" onclick="startBirthday()">
-                    Abre tu sorpresa 🎁
+                <button class="btn-primary" onclick="createConfetti()">
+                    🎉 ¡Vamos a Celebrar! 🎉
                 </button>
             </div>
         </section>
 
-        <!-- Sección Principal de Contenido (Oculta inicialmente) -->
-        <section class="main-section" id="mainSection" style="display: none;">
-            
-            <!-- Encabezado con contador -->
-            <div class="header-section">
-                <h1 class="main-title">Momentos Especiales con Brillito ✨</h1>
-                <div class="confetti-button">
-                    <button onclick="createConfetti()" class="btn-confetti">🎉 ¡Celebra conmigo!</button>
-                </div>
-            </div>
-
-            <!-- Galería de Fotos -->
-            <div class="gallery-section">
-                <h2 class="section-title">Nuestros Recuerdos 📸</h2>
-                
-                <div class="gallery-container">
-                    <!-- Visor principal -->
-                    <div class="gallery-main">
-                        <img id="mainPhoto" src="jpg/IMG-20181201-WA0001.jpg" alt="Foto principal" class="main-photo">
-                        <div class="photo-counter">
-                            <span id="photoNumber">1</span> / <span id="totalPhotos">15</span>
-                        </div>
-                    </div>
-
-                    <!-- Controles -->
-                    <div class="gallery-controls">
-                        <button class="btn-gallery" onclick="previousPhoto()">❮ Anterior</button>
-                        <button class="btn-gallery" onclick="nextPhoto()">Siguiente ❯</button>
-                    </div>
-
-                    <!-- Miniatura de fotos -->
-                    <div class="photo-thumbnails">
-                        <div class="thumbnails-scroll">
-                            <img src="jpg/IMG-20181201-WA0001.jpg" class="thumbnail active" onclick="goToPhoto(0)" alt="Foto 1">
-                            <img src="jpg/IMG-20190621-WA0000.jpg" class="thumbnail" onclick="goToPhoto(1)" alt="Foto 2">
-                            <img src="jpg/IMG-20190621-WA0007.jpg" class="thumbnail" onclick="goToPhoto(2)" alt="Foto 3">
-                            <img src="jpg/IMG-20190621-WA0008.jpg" class="thumbnail" onclick="goToPhoto(3)" alt="Foto 4">
-                            <img src="jpg/IMG-20190621-WA0009.jpg" class="thumbnail" onclick="goToPhoto(4)" alt="Foto 5">
-                            <img src="jpg/IMG-20230508-WA0076.jpg" class="thumbnail" onclick="goToPhoto(5)" alt="Foto 6">
-                            <img src="jpg/IMG-20230508-WA0080.jpg" class="thumbnail" onclick="goToPhoto(6)" alt="Foto 7">
-                            <img src="jpg/IMG-20230508-WA0100.jpg" class="thumbnail" onclick="goToPhoto(7)" alt="Foto 8">
-                            <img src="jpg/IMG_20181208_104616.jpg" class="thumbnail" onclick="goToPhoto(8)" alt="Foto 9">
-                            <img src="jpg/IMG_20181208_111406.jpg" class="thumbnail" onclick="goToPhoto(9)" alt="Foto 10">
-                            <img src="jpg/IMG_20190406_095103.jpg" class="thumbnail" onclick="goToPhoto(10)" alt="Foto 11">
-                            <img src="jpg/IMG_20191030_181722.jpg" class="thumbnail" onclick="goToPhoto(11)" alt="Foto 12">
-                            <img src="jpg/IMG_20191030_181836.jpg" class="thumbnail" onclick="goToPhoto(12)" alt="Foto 13">
-                            <img src="jpg/IMG_20210710_180316.jpg" class="thumbnail" onclick="goToPhoto(13)" alt="Foto 14">
-                            <img src="jpg/IMG_20210710_180321.jpg" class="thumbnail" onclick="goToPhoto(14)" alt="Foto 15">
-                        </div>
+        <!-- SECCIÓN GALERÍA -->
+        <section id="galeria">
+            <h2 class="section-title">Nuestros Recuerdos 📸</h2>
+            <div class="gallery-grid">
+                <div class="photo-card" onclick="openModal('jpg/IMG-20181201-WA0001.jpg')">
+                    <img src="jpg/IMG-20181201-WA0001.jpg" alt="Foto 1">
+                    <div class="photo-card-content">
+                        <h3>Momento 1</h3>
+                        <p>Un recuerdo especial</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Sección de Mensajes -->
-            <div class="messages-section">
-                <h2 class="section-title">Mensajes Especiales 💝</h2>
-                
-                <div class="messages-container">
-                    <div class="message-card">
-                        <div class="message-emoji">✨</div>
-                        <h3>Lo Que Amas Hacer</h3>
-                        <p>Cada momento contigo es especial y único. Tu risa, tu luz, tu forma de ver la vida... todo en ti es hermoso y genuino.</p>
+                <div class="photo-card" onclick="openModal('jpg/IMG-20190621-WA0000.jpg')">
+                    <img src="jpg/IMG-20190621-WA0000.jpg" alt="Foto 2">
+                    <div class="photo-card-content">
+                        <h3>Momento 2</h3>
+                        <p>Un recuerdo especial</p>
                     </div>
+                </div>
 
-                    <div class="message-card">
-                        <div class="message-emoji">💪</div>
-                        <h3>Tu Fortaleza</h3>
-                        <p>Eres más fuerte de lo que crees. Cada día demuestras tu valor y tu determinación. Siempre adelante, Brillito.</p>
+                <div class="photo-card" onclick="openModal('jpg/IMG-20190621-WA0007.jpg')">
+                    <img src="jpg/IMG-20190621-WA0007.jpg" alt="Foto 3">
+                    <div class="photo-card-content">
+                        <h3>Momento 3</h3>
+                        <p>Un recuerdo especial</p>
                     </div>
+                </div>
 
-                    <div class="message-card">
-                        <div class="message-emoji">🌟</div>
-                        <h3>Tu Brillo</h3>
-                        <p>Tienes un brillo especial que ilumina a todos a tu alrededor. Tu nombre te describe perfectamente: eres un Brillito en este mundo.</p>
+                <div class="photo-card" onclick="openModal('jpg/IMG-20190621-WA0008.jpg')">
+                    <img src="jpg/IMG-20190621-WA0008.jpg" alt="Foto 4">
+                    <div class="photo-card-content">
+                        <h3>Momento 4</h3>
+                        <p>Un recuerdo especial</p>
                     </div>
+                </div>
 
-                    <div class="message-card">
-                        <div class="message-emoji">❤️</div>
-                        <h3>Nuestros Recuerdos</h3>
-                        <p>Cada foto, cada momento compartido, cada risa... son tesoros que guardaré para siempre. Gracias por estar en mi vida.</p>
+                <div class="photo-card" onclick="openModal('jpg/IMG-20190621-WA0009.jpg')">
+                    <img src="jpg/IMG-20190621-WA0009.jpg" alt="Foto 5">
+                    <div class="photo-card-content">
+                        <h3>Momento 5</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG-20230508-WA0076.jpg')">
+                    <img src="jpg/IMG-20230508-WA0076.jpg" alt="Foto 6">
+                    <div class="photo-card-content">
+                        <h3>Momento 6</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG-20230508-WA0080.jpg')">
+                    <img src="jpg/IMG-20230508-WA0080.jpg" alt="Foto 7">
+                    <div class="photo-card-content">
+                        <h3>Momento 7</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG-20230508-WA0100.jpg')">
+                    <img src="jpg/IMG-20230508-WA0100.jpg" alt="Foto 8">
+                    <div class="photo-card-content">
+                        <h3>Momento 8</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20181208_104616.jpg')">
+                    <img src="jpg/IMG_20181208_104616.jpg" alt="Foto 9">
+                    <div class="photo-card-content">
+                        <h3>Momento 9</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20181208_111406.jpg')">
+                    <img src="jpg/IMG_20181208_111406.jpg" alt="Foto 10">
+                    <div class="photo-card-content">
+                        <h3>Momento 10</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20190406_095103.jpg')">
+                    <img src="jpg/IMG_20190406_095103.jpg" alt="Foto 11">
+                    <div class="photo-card-content">
+                        <h3>Momento 11</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20191030_181722.jpg')">
+                    <img src="jpg/IMG_20191030_181722.jpg" alt="Foto 12">
+                    <div class="photo-card-content">
+                        <h3>Momento 12</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20191030_181836.jpg')">
+                    <img src="jpg/IMG_20191030_181836.jpg" alt="Foto 13">
+                    <div class="photo-card-content">
+                        <h3>Momento 13</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20210710_180316.jpg')">
+                    <img src="jpg/IMG_20210710_180316.jpg" alt="Foto 14">
+                    <div class="photo-card-content">
+                        <h3>Momento 14</h3>
+                        <p>Un recuerdo especial</p>
+                    </div>
+                </div>
+
+                <div class="photo-card" onclick="openModal('jpg/IMG_20210710_180321.jpg')">
+                    <img src="jpg/IMG_20210710_180321.jpg" alt="Foto 15">
+                    <div class="photo-card-content">
+                        <h3>Momento 15</h3>
+                        <p>Un recuerdo especial</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Sección de Deseos -->
-            <div class="wishes-section">
-                <h2 class="section-title">Mis Deseos Para Ti 🎂</h2>
-                
-                <div class="wishes-list">
-                    <div class="wish-item">
-                        <span class="wish-number">1</span>
-                        <p>Que cada día sea tan especial como tú</p>
-                    </div>
-                    <div class="wish-item">
-                        <span class="wish-number">2</span>
-                        <p>Que logres todos tus sueños y metas</p>
-                    </div>
-                    <div class="wish-item">
-                        <span class="wish-number">3</span>
-                        <p>Que siempre encuentres razones para sonreír</p>
-                    </div>
-                    <div class="wish-item">
-                        <span class="wish-number">4</span>
-                        <p>Que la vida te llene de sorpresas maravillosas</p>
-                    </div>
-                    <div class="wish-item">
-                        <span class="wish-number">5</span>
-                        <p>Que nunca pierdas esa luz que te caracteriza</p>
-                    </div>
+        <!-- MODAL DE FOTOS -->
+        <div id="photoModal" class="modal" onclick="closeModal(event)">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <img id="modalImg" class="modal-img" src="" alt="Foto ampliada">
+            </div>
+        </div>
+
+        <!-- SECCIÓN MENSAJES -->
+        <section id="mensajes">
+            <h2 class="section-title">Mensajes Especiales 💝</h2>
+            <div class="messages-grid">
+                <div class="message-card">
+                    <div class="message-emoji">✨</div>
+                    <h3>Tu Luz</h3>
+                    <p>Tienes un brillo especial que ilumina a todos a tu alrededor. Tu nombre te describe perfectamente: eres un Brillito en este mundo.</p>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-emoji">💪</div>
+                    <h3>Tu Fortaleza</h3>
+                    <p>Eres más fuerte de lo que crees. Cada día demuestras tu valor y tu determinación. Siempre adelante, Brillito.</p>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-emoji">❤️</div>
+                    <h3>Tu Importancia</h3>
+                    <p>Cada foto, cada momento compartido, cada risa... son tesoros que guardaré para siempre. Gracias por estar en mi vida.</p>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-emoji">🌟</div>
+                    <h3>Tu Belleza</h3>
+                    <p>Cada momento contigo es especial y único. Tu risa, tu luz, tu forma de ver la vida... todo en ti es hermoso y genuino.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Sección Final -->
-            <div class="final-section">
-                <h2 class="section-title">¡Gracias por ser parte de mi vida! 🎉</h2>
-                <p class="final-message">
-                    Hoy es un día para celebrarte a ti,<br>
-                    para recordar lo maravillosa que eres,<br>
-                    y para reafirmar cuánto significa tu existencia en mi vida.<br>
-                    <br>
-                    <strong>¡Feliz Cumpleaños, Brillito! ✨🎂🎈</strong>
-                </p>
-                
-                <button onclick="createBigConfetti()" class="btn-big-confetti">
-                    🎉 ¡SORPRESA FINAL! 🎉
-                </button>
+        <!-- SECCIÓN DESEOS -->
+        <section id="deseos">
+            <h2 class="section-title">Mis Deseos Para Ti 🎂</h2>
+            <div class="wishes-list">
+                <div class="wish-item">
+                    <span class="wish-number">1</span>
+                    <p>Que cada día sea tan especial como tú</p>
+                </div>
+                <div class="wish-item">
+                    <span class="wish-number">2</span>
+                    <p>Que logres todos tus sueños y metas</p>
+                </div>
+                <div class="wish-item">
+                    <span class="wish-number">3</span>
+                    <p>Que siempre encuentres razones para sonreír</p>
+                </div>
+                <div class="wish-item">
+                    <span class="wish-number">4</span>
+                    <p>Que la vida te llene de sorpresas maravillosas</p>
+                </div>
+                <div class="wish-item">
+                    <span class="wish-number">5</span>
+                    <p>Que nunca pierdas esa luz que te caracteriza</p>
+                </div>
             </div>
         </section>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🎉 ¡Feliz Cumpleaños, Brillito! 🎉</p>
+        <p>Hoy es un día para celebrarte a ti,</p>
+        <p>para recordar lo maravillosa que eres,</p>
+        <p>y para reafirmar cuánto significa tu existencia en mi vida.</p>
+        <p><strong>✨ Con todo mi cariño ✨</strong></p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

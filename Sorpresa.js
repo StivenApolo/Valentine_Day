@@ -1,8 +1,23 @@
-// Foto Retrato
+/**
+ * SORPRESA.JS - Gestión de Eventos e Interacciones
+ * Controlador de modales, fotos sorpresa y eventos de cumpleaños
+ */
+
+// ============================================
+// 1. MODAL DE FOTO DEL RETRATO
+// ============================================
+
+/**
+ * Abre el modal que muestra la foto del retrato ampliada
+ */
 function abrirFoto() {
   document.getElementById("modalFoto").classList.add("activo");
 }
 
+/**
+ * Cierra el modal de foto con prevención de propagación
+ * @param {Event} event - Evento del click
+ */
 function cerrarFoto(event) {
   if (event && event.stopPropagation) {
     event.stopPropagation();
@@ -10,18 +25,22 @@ function cerrarFoto(event) {
   document.getElementById("modalFoto").classList.remove("activo");
 }
 
-// Cerrar modal de foto con tecla Escape
+// Permitir cerrar modal con tecla Escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     cerrarFoto();
   }
 });
 
-// Carta
+// ============================================
+// 2. MODAL DE CARTA DE CUMPLEAÑOS
+// ============================================
+
 const regalo = document.querySelector(".regalo");
 const regalos = document.querySelector(".regalos");
 const modalCarta = document.getElementById("modalCarta");
 
+// Abrir carta al hacer click en regalo
 regalo.addEventListener("click", () => {
   modalCarta.classList.add("activo");
 });
@@ -30,11 +49,15 @@ regalos.addEventListener("click", () => {
   modalCarta.classList.add("activo");
 });
 
+// Cerrar carta al hacer click fuera
 modalCarta.addEventListener("click", () => {
   modalCarta.classList.remove("activo");
 });
 
-// Todo Oscuro + Soplido + Canción
+// ============================================
+// 3. EVENTOS DE VELA Y CONFETI
+// ============================================
+
 const overlay = document.querySelector(".overlay");
 const soplido = document.getElementById("soplido");
 const cancion = document.getElementById("cancion");
@@ -42,6 +65,14 @@ const llama = document.querySelector(".llama");
 const tempFoto = document.getElementById("tempFoto");
 const tempFotoImg = document.getElementById("tempFotoImg");
 
+// ============================================
+// 4. FOTOS SORPRESA
+// ============================================
+
+/**
+ * Array de nombres de archivos de fotos disponibles en /jpg
+ * Se selecciona una aleatoria para mostrar en cada click
+ */
 const fotosSorpresa = [
   "IMG-20181201-WA0001.jpg",
   "IMG-20190621-WA0000.jpg",
@@ -60,28 +91,49 @@ const fotosSorpresa = [
   "IMG_20210710_180321.jpg"
 ];
 
+/**
+ * Muestra una foto sorpresa de tamaño pequeño en la posición del click
+ * @param {number} x - Coordenada X del click
+ * @param {number} y - Coordenada Y del click
+ */
 function mostrarFotoTemporal(x, y) {
+  // Seleccionar foto aleatoria
   const nombreFoto = fotosSorpresa[Math.floor(Math.random() * fotosSorpresa.length)];
   tempFotoImg.src = `jpg/${nombreFoto}`;
   
-  // Posicionar en las coordenadas del click (centrado en el punto)
+  // Posicionar centrado en el punto de click
   tempFoto.style.left = (x - 80) + "px";
   tempFoto.style.top = (y - 80) + "px";
   
+  // Mostrar con transición
   tempFoto.classList.add("activo");
 
+  // Ocultar después de 1.8 segundos
   setTimeout(() => {
     tempFoto.classList.remove("activo");
   }, 1800);
 }
 
-// Evento de la llama para apagar y pasar de pantalla oscura
+// ============================================
+// 5. EVENTO DE LA VELA - APAGAR Y MÚSICA
+// ============================================
+
+/**
+ * Al hacer click en la vela:
+ * 1. Reproduce efecto de soplido
+ * 2. Anima la vela apagándose
+ * 3. Reproduce canción de cumpleaños
+ * 4. Oculta la pantalla oscura para permitir interacciones
+ */
 llama.addEventListener("click", () => {
+  // Reproducir efecto de soplido
   soplido.currentTime = 0;
   soplido.play();
 
-  llama.style.animation = "apagar 0.5s forwards"; // forwards -> Ultimo frame (to)
+  // Animar apagado de la vela
+  llama.style.animation = "apagar 0.5s forwards";
 
+  // Después del apagado, reproducir canción y revelar la página
   setTimeout(() => {
     cancion.currentTime = 0;
     cancion.play();
@@ -89,14 +141,22 @@ llama.addEventListener("click", () => {
   }, 1000);
 });
 
-// Click en cualquier lugar excepto portaretrato y regalo para mostrar fotos
+// ============================================
+// 6. EVENTO DE CLICK EN PANTALLA - FOTOS SORPRESA
+// ============================================
+
+/**
+ * Muestra fotos sorpresa al hacer click en cualquier lugar
+ * EXCEPTO en portaretrato y regalo (que tienen sus propios eventos)
+ * Solo funciona DESPUÉS de apagar la vela (cuando el overlay está hidden)
+ */
 document.addEventListener("click", (e) => {
   const portaretrato = document.querySelector(".portaretrato");
   const marco = document.querySelector(".marco");
   const regalo = document.querySelector(".regalo");
   const regalos = document.querySelector(".regalos");
   
-  // Solo permitir fotos si el overlay NO está visible
+  // No permitir interacciones mientras la pantalla está oscura (vela sin apagar)
   if (!overlay.classList.contains("hidden")) {
     return;
   }

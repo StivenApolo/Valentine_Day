@@ -8,116 +8,195 @@
   -ms-user-select: none;     /* IE/Edge */
 }
 
-/* Mesa */
-.soporte {
-  width: 370px;
-  left: -6px;
-}
-
-.soporte::before {
-  width: 100px;
-  height: 1000px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 18px;
-}
-
-.soporte::after {
-  width: 95px;
-  height: 1000px;
-  left: 85px;
-}
-
-/*Mensaje*/
-.happy-birthday {
-  top: -100%;
-  left: 120px;
-}
-
-/*Objetos de la mesa*/
-.portaretrato {
-  transform: scale(0.75);
-  left: 65px;
-  bottom: -12px;
-}
-
-.torta {
-  transform: scale(0.75);
-  left: 15px;
-  bottom: -20px;
-}
-
-.caja {
-  transform: scale(0.75);
-  left: -65px;
-}
-
-.vela {
-  transform: scale(0.75);
-  bottom: 94px;
-  left: 145px;
-}
-
-.llama {
-  bottom: 160px;
-  left: 142px;
-}
-
-.carta {
-  animation: none; /* Evitar mini zoom */
-  transform: scale(0.8);
-  transform-origin: center center;
-  margin: 0 auto; /* Centrar horizontalmente */
-}
-
-/* Nuevo media query para pantallas más pequeñas */
-@media only screen and (max-width: 400px) {
-
-  .soporte {
-    width: 300px;
+/* Responsive para pantallas medianas y pequeñas */
+@media only screen and (max-width: 768px) {
+  html {
+    overflow: hidden;
   }
 
-  .soporte::after {
-    left: 45px;
-    top: 20px;
+  body {
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .contenedor {
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .portaretrato-torta-caja {
+    width: 100%;
+    max-width: 400px;
+    gap: 8px;
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
+  }
+
+  .soporte {
+    width: 85%;
+    max-width: 380px;
+    margin: 10px auto;
   }
 
   .happy-birthday {
-    font-size: 36px;
-    top: -100%;
-    left: 130px;
+    font-size: 28px;
+  }
+
+  .marco {
+    width: 65px;
+    height: 65px;
+  }
+
+  .soporte-marco {
+    width: 65px;
+    height: 12px;
+  }
+
+  /* Modal Foto Responsivo */
+  .contenido-foto {
+    max-width: 85vw !important;
+    max-height: 50vh !important;
+  }
+
+  .close-modal {
+    font-size: 24px !important;
+  }
+
+  /* Carta Modal Responsivo */
+  .carta {
+    width: 90% !important;
+    max-width: 400px !important;
+    padding: 0 !important;
+  }
+
+  .carta-contenido {
+    padding: 24px !important;
+  }
+
+  .carta h2 {
+    font-size: 24px !important;
+  }
+
+  .carta p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media only screen and (max-width: 400px) {
+  .portaretrato-torta-caja {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .soporte {
+    width: 90%;
+    max-width: 280px;
+  }
+
+  .soporte::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .soporte::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .happy-birthday {
+    font-size: 24px;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
   }
 
   .portaretrato {
-    transform: scale(0.65);
-    left: 92px;
-    bottom: -16px;
+    transform: scale(0.6);
+    position: relative;
   }
 
   .torta {
-    transform: scale(0.63);
-    left: 17px;
-    bottom: -27px;
+    transform: scale(0.58);
+    position: relative;
   }
 
   .caja {
-    transform: scale(0.65);
-    left: -100px;
-    bottom: -35px;
+    transform: scale(0.6);
+    position: relative;
   }
 
   .vela {
-    transform: scale(0.65);
-    bottom: 74px;
-    left: 160px;
+    transform: scale(0.55);
+    position: absolute;
+    bottom: 140px;
+    left: 50%;
+    margin-left: -10px;
   }
 
   .llama {
-    bottom: 138px;
-    left: 157px;
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    margin-left: -8px;
+    transform: scale(0.6);
+    z-index: 10;
+  }
+
+  .marco {
+    width: 55px;
+    height: 55px;
+    padding: 4px;
+  }
+
+  .soporte-marco {
+    width: 55px;
+    height: 11px;
+  }
+
+  .torta-cumpleaños {
+    transform: scale(0.65);
+  }
+
+  .caja-wrapper {
+    transform: scale(0.6);
   }
 
   .carta {
-    transform: scale(0.7);
+    width: 95% !important;
+    max-width: none !important;
+  }
+
+  .carta-contenido {
+    padding: 20px !important;
+  }
+
+  .carta h2 {
+    font-size: 20px !important;
+  }
+
+  .carta p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .contenido-foto {
+    max-width: 95vw !important;
+    max-height: 40vh !important;
+  }
+
+  .close-modal {
+    font-size: 22px !important;
+    top: -30px !important;
   }
 }

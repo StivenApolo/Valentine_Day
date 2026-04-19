@@ -31,8 +31,8 @@ PortaRetrato -->
       <div class="portaretrato-torta-caja">
         <div
 class="portaretrato">
-          <div class="marco">
-            <img src="recursos/cumpleañero.png" alt="Foto" />
+          <div class="marco" onclick="abrirFoto()">
+            <img src="recursos/Cumpleañera.jpg" alt="Foto" />
           </div>
           <div class="soporte-marco"></div>
         </div>
@@ -83,19 +83,34 @@ Cumpleaños-->
       <div class="soporte"></div>
     </div>
 
-    <!-- Carta Modal
--->
+    <!-- Modal Foto Retrato -->
+    <div class="modal-foto" id="modalFoto" onclick="cerrarFoto(event)">
+      <div class="contenido-foto" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="cerrarFoto()">&times;</span>
+        <img id="fotoRetrato" src="recursos/Cumpleañera.jpg" alt="Foto Amplificada" />
+      </div>
+    </div>
+
+    <!-- Foto Sorpresa Temporal -->
+    <div class="temp-foto" id="tempFoto">
+      <img id="tempFotoImg" src="" alt="Foto Sorpresa" />
+    </div>
+
+    <!-- Carta Modal -->
     <div class="modal-carta" id="modalCarta">
-      <div
-class="contenido-carta">
+      <div class="contenido-carta">
         <div class="carta">
-          <h2>Querido(a) [Nombre]</h2>
-          <p>
-            En este día tan especial quiero desearte un feliz cumpleaños
-lleno
-            de alegría, risas y momentos inolvidables. 🎂✨
-          </p>
-          <p class="firma">Con cariño,<br />Tu Novio(a)</p>
+          <div class="carta-collage"></div>
+          <div class="carta-contenido">
+            <h2>Mi brillito</h2>
+            <p>
+              ¡Feliz cumpleaños! Te quiero mucho, mucho.<br>
+              Entre peleas, risas y compartiendo un humor muy cuestionable, me alegra que cumplas un añito más, en el cual has mejorado y avanzado como nadie. Quiero que sepas que lograrás tus metas tarde o temprano.<br>
+              Gracias por permitirme seguir siendo parte de tu vida, por ser una maravillosa persona y una gran amiga.<br>
+              Te quiero mucho, ¡y que cumplas muchos años más!
+            </p>
+            <p class="firma">Con cariño,<br /> Apolito </p>
+          </div>
         </div>
       </div>
     </div>

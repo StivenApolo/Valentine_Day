@@ -44,7 +44,11 @@
   }
 
   .happy-birthday {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  .happy-birthday .subtitle {
+    font-size: 14px;
   }
 
   .marco {
@@ -114,11 +118,15 @@
   }
 
   .happy-birthday {
-    font-size: 24px;
+    font-size: 18px;
     position: relative;
     top: auto;
     left: auto;
     transform: none;
+  }
+
+  .happy-birthday .subtitle {
+    font-size: 12px;
   }
 
   .portaretrato {
